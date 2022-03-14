@@ -32,7 +32,8 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && name.equals(person.name);
+        return id == person.id &&
+                name.equals(person.name);
     }
 
     @Override
