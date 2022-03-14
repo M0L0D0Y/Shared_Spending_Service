@@ -1,17 +1,29 @@
 package module;
 
-import java.util.List;
-import java.util.Objects;
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class Expence {
-    Person from;
-    List<Person> to;
-    List<Double> amount;
+    private long id;
+    private Person from;
+    private Person to;
+    private BigDecimal amount;
+    private Date dataTime;
 
-    public Expence(Person from, List<Person> to, List<Double> amount) {
+    public Expence(long id, Person from, Person to, BigDecimal amount, Date dataTime) {
+        this.id = id;
         this.from = from;
         this.to = to;
         this.amount = amount;
+        this.dataTime = dataTime;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Person getFrom() {
@@ -22,43 +34,27 @@ public class Expence {
         this.from = from;
     }
 
-    public List<Person> getTo() {
+    public Person getTo() {
         return to;
     }
 
-    public void setTo(List<Person> to) {
+    public void setTo(Person to) {
         this.to = to;
     }
 
-    public List<Double> getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(List<Double> amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Expence expence = (Expence) o;
-        return Objects.equals(amount, expence.amount) &&
-                Objects.equals(from, expence.from) &&
-                Objects.equals(to, expence.to);
+    public Date getDataTime() {
+        return dataTime;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(from, to, amount);
-    }
-
-    @Override
-    public String toString() {
-        return "Expence{" +
-                "from=" + from +
-                ", to=" + to +
-                ", amount=" + amount +
-                '}';
+    public void setDataTime(Date dataTime) {
+        this.dataTime = dataTime;
     }
 }
