@@ -1,21 +1,18 @@
 package module;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class Expence {
     private long id;
     private Person from;
     private Person to;
     private BigDecimal amount;
-    private Date dataTime;
 
-    public Expence(long id, Person from, Person to, BigDecimal amount, Date dataTime) {
+    public Expence(long id, Person from, Person to, BigDecimal amount) {
         this.id = id;
         this.from = from;
         this.to = to;
         this.amount = amount;
-        this.dataTime = dataTime;
     }
 
     public long getId() {
@@ -50,11 +47,4 @@ public class Expence {
         this.amount = amount;
     }
 
-    public Date getDataTime() {
-        return dataTime;
-    }
-
-    public void setDataTime(Date dataTime) {
-        this.dataTime = dataTime;
-    }
 }
