@@ -57,4 +57,13 @@ public class Expence {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "Expence{" +
+                "name='" + name + '\'' +
+                ", from=" + from +
+                ", to=" + to +
+                ", amount=" + amount +
+                '}';
+    }
 }

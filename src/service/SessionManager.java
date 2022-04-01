@@ -18,7 +18,7 @@ public class SessionManager {
     }
 
     public void addExpence(String name, String from, BigDecimal amount) {// передаем имя траты, кто заплатил и сколько
-        List<Person> listDebtor = personList;//чтобы не удалять из сессии создаем копию
+        List<Person> listDebtor = new ArrayList<>(personList);//чтобы не удалять из сессии создаем копию
         Person payer = null;
         for (int i=0; i< listDebtor.size(); i++){//ищем по имени
             if (listDebtor.get(i).getName().equals(from)){//как находим
@@ -33,6 +33,11 @@ public class SessionManager {
         for (Person person : listDebtor) {//создаем трату для каждого из должников
             Expence expence = new Expence(generateId.generate(), name, payer, person, duty);
             expenceList.add(expence);//записываем ее в список трат
+        }
+    }
+    public void printExpence(){
+        for (Expence expence: expenceList){
+            System.out.println(expence);
         }
     }
 
