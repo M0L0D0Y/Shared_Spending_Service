@@ -4,12 +4,14 @@ import java.math.BigDecimal;
 
 public class Expence {
     private long id;
+    private String name;
     private Person from;
     private Person to;
     private BigDecimal amount;
 
-    public Expence(long id, Person from, Person to, BigDecimal amount) {
+    public Expence(long id, String name, Person from, Person to, BigDecimal amount) {
         this.id = id;
+        this.name = name;
         this.from = from;
         this.to = to;
         this.amount = amount;
@@ -21,6 +23,14 @@ public class Expence {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Person getFrom() {
@@ -47,4 +57,13 @@ public class Expence {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "Expence{" +
+                "name='" + name + '\'' +
+                ", from=" + from +
+                ", to=" + to +
+                ", amount=" + amount +
+                '}';
+    }
 }
