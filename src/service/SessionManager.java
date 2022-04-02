@@ -33,28 +33,28 @@ public class SessionManager {
 
     private void calculateExpence() {
         for (Person person : personList) {
-            List<String> listName = new ArrayList<>();
+            List<Person> listPerson = new ArrayList<>();
             for (Expence item : expenceList) {
-                listName.add(item.getFrom().getName());
+                listPerson.add(item.getFrom());
             }
-            while (listName.contains(person.getName())) {
-                listName.remove(person.getName());
+            while (listPerson.contains(person)) {
+                listPerson.remove(person);
                 for (int i = 0; i < expenceList.size(); i++) {
-                    String name = expenceList.get(i).getFrom().getName();
+                    Person creditor = expenceList.get(i).getFrom();
                     for (int j = 0; j < expenceList.size(); j++) {
-                        if (name.equals(expenceList.get(j).getTo().getName())) {
-                            String name1 = expenceList.get(j).getFrom().getName();
-                            if (name1.equals(expenceList.get(i).getTo().getName())) {
-                                BigDecimal amount = expenceList.get(i).getAmount();
-                                BigDecimal amount1 = expenceList.get(j).getAmount();
-                                int value = amount.compareTo(amount1);
+                        if (creditor.equals(expenceList.get(j).getTo())) {
+                            Person debtor = expenceList.get(j).getFrom();
+                            if (debtor.equals(expenceList.get(i).getTo())) {
+                                BigDecimal amountCreditor = expenceList.get(i).getAmount();
+                                BigDecimal amountDebtor= expenceList.get(j).getAmount();
+                                int value = amountCreditor.compareTo(amountDebtor);
                                 if (value > 0) {
-                                    BigDecimal newAmount = amount.subtract(amount1);
-                                    expenceList.get(i).setAmount(newAmount);
+                                    BigDecimal newAmountCreditor = amountCreditor.subtract(amountDebtor);
+                                    expenceList.get(i).setAmount(newAmountCreditor);
                                     expenceList.remove(expenceList.get(j));
                                 } else if (value < 0) {
-                                    BigDecimal newAmount1 = amount1.subtract(amount);
-                                    expenceList.get(j).setAmount(newAmount1);
+                                    BigDecimal newAmountDebstor = amountDebtor.subtract(amountCreditor);
+                                    expenceList.get(j).setAmount(newAmountDebstor);
                                     expenceList.remove(expenceList.get(i));
                                 } else {
                                     Expence expence1 = expenceList.get(i);
