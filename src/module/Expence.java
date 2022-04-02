@@ -8,7 +8,7 @@ public class Expence {
     private Person to;
     private BigDecimal amount;
 
-    public Expence(long id, Person from, Person to, BigDecimal amount) {
+    public Expence(long id, String name, Person from, Person to, BigDecimal amount) {
         this.id = id;
         this.from = from;
         this.to = to;
